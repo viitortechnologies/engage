@@ -1,0 +1,10 @@
+Customers Details tracking for multple businesses
+
+When user enter phone number , Display all hystory calls , we will display all details business wise.
+
+If customer raise any concern or complain , we will create a new ticket under the business .
+
+If customer is part of get eazy customer, customer added a review we will raise a ticket under get eazy business to add some amount to customer wallet.
+
+Share survey links to the all the customers, and we should keep track all the survey details customer wise what are survey they have clicked and submitted details etc..
+
