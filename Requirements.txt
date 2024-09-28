@@ -8,3 +8,17 @@ If customer is part of get eazy customer, customer added a review we will raise 
 
 Share survey links to the all the customers, and we should keep track all the survey details customer wise what are survey they have clicked and submitted details etc..
 
+
+
+
+This project started based on below tutorial
+https://www.youtube.com/watch?v=xvBUgdKUz5g&list=PL-JTnqZPF5z2qTGwNkYln3m0pA0qfgHFR&index=66
+https://github.com/aamirjaved844/Dashbaord-Tutorial-using-React-and-Ant-Design/blob/main/src/Pages/Dashbaord/index.js
+
+
+Reference Videos React Native
+
+https://www.youtube.com/watch?v=tm0NsNG813s
+https://www.youtube.com/watch?v=gx24TcCAtMU
+codevolution react channel
+https://www.youtube.com/watch?v=Wxas-u1XLJI
