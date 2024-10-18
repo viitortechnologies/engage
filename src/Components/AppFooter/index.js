@@ -1,8 +1,9 @@
 import { Typography } from "antd";
 
-function AppFooter(){
-    return <div className="app-footer">
-      <Typography.Text>Viitor Technologies</Typography.Text>  
+function AppFooter() {
+  return (
+    <div className="AppFooter">
+    <Typography.Text>Viitor Technologies</Typography.Text> 
       <Typography.Link href="tel:+123456789">+123456789</Typography.Link>
       <Typography.Link href="https://www.google.com" target={"_blank"}>
         Privacy Policy
@@ -10,8 +11,7 @@ function AppFooter(){
       <Typography.Link href="https://www.google.com" target={"_blank"}>
         Terms of Use
       </Typography.Link>
-        
     </div>
+  );
 }
-
 export default AppFooter;

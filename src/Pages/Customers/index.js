@@ -1,19 +1,79 @@
-import { Select, Table, Typography } from "antd";
+import { Button, Col, Layout, Modal, Row, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { apiGet, getUsersByRoleName } from "../../API";
-import { token } from "../../config";
+import { apiGet } from "../../API";
+import { UserAddOutlined } from "@ant-design/icons";
+import { Content, Header } from "antd/es/layout/layout";
+import CustomerForm from "../../Components/Forms/CustomerForm";
 
 
-function Customers() {
-  const roleList = ['admin', 'agent', 'superuser']
-    return (
-        <div>
-          <Typography.Title level={3}>Customer Tab</Typography.Title>
-          {/* <Select placeholder="Role Name" options={roleList}></Select> */}
-          <UsersListByRoleName />
-        </div>
+
+const Customers = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const staticValues = {
+    "state":"telangana",
+    "country":"INIDA",
+    "pincode":"503224",
+    "salary":"99999",
+    "requirement":"NA-NA-NA",
+    "age":29,
+    "obligations":"Requirment from Customer",
+    "createdById":186,
+    "createdByName":"subham",
+    "updatedById":93,
+    "updatedByName":"Jaya Krishna"
+}
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSubmit = (values) => {
+    console.log('Form Submitted:', values); // Handle form submission (e.g., API call)
+    setIsModalOpen(false); // Close modal after submission
+  };
+
+  return (
+      <div>
+        <Layout>
+          <Header style={{background: '#fff', padding: '0 20px'}}>
+            <Row justify="space-between" align="middle">
+              <Col>
+                <Typography.Title level={3}>Customer Tab</Typography.Title>
+              </Col>
+              <Col>
+                <Button icon={<UserAddOutlined/>} type="primary" onClick={showModal} > Add/Update Customer</Button>
+              </Col>
+            </Row>
+          </Header>
+        </Layout>
+        {/* <Select placeholder="Role Name" options={roleList}></Select> */}
+        {/* <FloatButton shape="circle" type="primary" icon={<CustomerServiceOutlined />} /> */}
+        {/* <Button type="primary" onClick={show} */}
         
-    )
+        {/* Content with space for right-side content */}
+        <Content style={{ margin: '20px' }}>
+          <UsersListByRoleName />
+        </Content>
+
+        <Modal 
+        title="Add or Update Customer Details"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        >
+          <CustomerForm staticValues={staticValues} />
+        </Modal>
+    </div>
+  )
 }
 
 function UsersListByRoleName(roleName) { 
@@ -24,19 +84,21 @@ function UsersListByRoleName(roleName) {
   useEffect(() => {
     setLoading(true);
 
-    apiGet('/getUsersByRoles?roleName=agent').then((data) => {
-      setuserDataSource(data.result.content);
+    apiGet('/getAllCustomerDetails').then((data) => {
+      setuserDataSource(data.result);
       setLoading(false)
     });
     
   }, [])
 
     return (
+      <>
+      
       <Table
       columns={ [
         { 
           title: 'Name',
-          dataIndex : 'firstName',
+          dataIndex : 'name',
         },
         { 
           title: 'Email',
@@ -50,6 +112,16 @@ function UsersListByRoleName(roleName) {
 
       dataSource={userDataSource}
       ></Table>
+
+      <Modal
+      title="Add New Customer"
+      
+      footer={null}
+      >
+
+      </Modal>
+      </>
 )
 };
+
 export default Customers;
